@@ -1,0 +1,47 @@
+using System;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Вариант 1, задание 1:");
+            Random rnd = new Random();
+
+            int v00 = rnd.Next(-10,10); 
+            int v01 = rnd.Next(-10, 10); 
+            int v02 = rnd.Next(-10, 10);
+            int v10 = rnd.Next(-10, 10);
+            int v11 = rnd.Next(-10, 10);
+            int v12 = rnd.Next(-10, 10);
+            int v20 = rnd.Next(-10, 10);
+            int v21 = rnd.Next(-10, 10);
+            int v22 = rnd.Next(-10, 10);
+
+
+            int[,] arr = { { v00, v01, v02, }, { v10, v11, v12 }, { v20, v21, v22 } };
+            int max, min;
+            max = min = arr[0, 0];
+            Console.WriteLine("Случайный массив: ");
+            for (int i = 0; i <= arr.Rank; i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    if (min > arr[i, j])
+                        min = arr[i, j];
+                    else if (max < arr[i, j])
+                        max = arr[i, j];
+                    Console.Write("{0, 3}", arr[i, j]);
+                }
+                Console.WriteLine();
+            }
+            int sum = 0;
+            foreach (int value in arr)
+            {
+                sum += value;
+            }
+            Console.WriteLine("Сумма элементов массива: " + sum);
+        }
+    }
+}
