@@ -1,0 +1,149 @@
+using System;
+
+namespace LR4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите количество значений: ");
+            int n = int.Parse(Console.ReadLine());
+            
+            double[] num = new double[n];
+
+            Console.WriteLine("Введите значения массива:");
+            for (int i = 0; i < num.Length; i++)
+            {
+                Console.Write($"{i + 1} значение: ");
+                num[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine();
+            Console.Write("Результат: ");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = i; j > 0; j--)
+                {  
+                    if (num[j - 1] == num[i])
+                    {
+                        num[i] = 0;
+                        
+                    }
+                }
+                
+                if (num[i] == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    Console.Write($"{num[i]} ");
+                }
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+
+
+2
+namespace LR4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите размерность пространства: ");
+            int n = int.Parse(Console.ReadLine());
+
+            double[] A = new double[n];
+            double[] B = new double[n];
+
+            Console.WriteLine("Введите координаты для точки A.");
+
+            for (int i = 0; i < A.Length; i++)
+            {
+                Console.Write($"Координата под индексом {i}: ");
+                A[i] = double.Parse(Console.ReadLine());
+            }
+
+
+
+            Console.WriteLine("Введите координаты для точки В.");
+
+
+            for (int i = 0; i < B.Length; i++)
+            {
+                Console.Write($"Координата под индексом {i}: ");
+                B[i] = double.Parse(Console.ReadLine());
+            }
+
+            double summa = 0;
+            for (int i = 0; i < n; i++)
+            {
+                summa += (A[i] - B[i]) * (A[i] - B[i]);
+            }
+
+            double res = Math.Sqrt(summa);
+
+            Console.WriteLine($"Расстояние между точками равно: {Math.Round(res, 2)}");
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+
+
+
+1
+using System;
+
+namespace LR4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double[] num = new double[10000];
+
+            num[0] = 0;
+            double firstnum = num[0];
+
+            Console.WriteLine("Заполните массив." +
+            " Введите -0, чтобы продолжить выполнение программы.");
+
+            for (int i = 1; i < num.Length; i++)
+{
+                Console.Write($"{i} значение: ");
+
+                num[i] = double.Parse(Console.ReadLine());
+
+                if (num[i] == -0)
+                {
+                    break;
+                }
+            }
+
+            int score = 0;
+            for (int f = 0; f < num.Length; f++)
+            {
+                if (num[f] > firstnum)
+                {
+                    firstnum = num[f];
+                    score = f;
+                    break;
+                }
+            }
+
+            Console.WriteLine($"Первое положительное число массива: {firstnum}, " +
+            $"а его индекс в массиве: {score - 1}");
+            Console.ReadKey();
+        }
+    }
+}
